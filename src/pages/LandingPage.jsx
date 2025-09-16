@@ -16,7 +16,7 @@ function LandingPage(){
 
     return(
         <div>
-            <h1>Top 5 Rented Films:</h1>
+            <h1>Top 5 Rented Films:</h1><br></br>
             <ul>
                 {topFilms.map((film) => (
                     <li key={film.film_id}>

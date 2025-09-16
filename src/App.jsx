@@ -18,8 +18,9 @@ function App() {
 
   return (
     <div className="app-general">
-      <Header/> 
+      <Header/> <hr></hr>
       <div>
+        <br></br>
         <LandingPage />
         <br></br>
         Hello World
