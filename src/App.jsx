@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Header from './components/Header.jsx'
+import Footer from './components/Footer.jsx'
 import axios from "axios"
 
 function App() {
@@ -14,10 +16,13 @@ function App() {
   },[])
 
   return (
-    <>
-      <div> Test
+    <div className="app-general">
+      <Header/> 
+      <div>
+        Hello World
       </div>
-    </>
+      <Footer/>
+    </div>
   )
 }
 
