@@ -2,7 +2,8 @@ function Footer(){
 
     return (
         <footer className="footer">
-            <h1>This is my footer</h1>
+            <br></br>
+            <p>&copy; Thank you for visiting Movipedia</p>
         </footer>
     );
 

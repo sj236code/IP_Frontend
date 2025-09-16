@@ -2,24 +2,28 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import LandingPage from './pages/LandingPage.jsx'
 import axios from "axios"
 
 function App() {
 
-  const fetchAPI = async() => {
-    const response = await axios.get("http://localhost:5000/testdb");
-    console.log(response.data.users);
+  const fetchTopFilms = async() => {
+    const response = await axios.get("http://localhost:5000/topFilms");
+    console.log(response.data);
   }
 
   useEffect(()=> {
-    fetchAPI()
+    fetchTopFilms()
   },[])
 
   return (
     <div className="app-general">
       <Header/> 
       <div>
+        <LandingPage />
+        <br></br>
         Hello World
+        <br></br>
       </div>
       <Footer/>
     </div>
