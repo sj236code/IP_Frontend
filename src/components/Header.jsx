@@ -1,8 +1,15 @@
+import React from 'react';
+import '../App.css';
+import filmCamera from '../assets/film_camera.png';
+
 function Header(){
 
     return (
-        <header className="header">
-            <h1>Movipedia</h1>
+        <header className='header'>
+            <div className="logo">
+                <img src={filmCamera} className="logo-img" />
+                <h1>Movipedia</h1>
+            </div>
             <nav>
                 <ul className="nav-links">
                     <li><a href="#">Home</a></li>
