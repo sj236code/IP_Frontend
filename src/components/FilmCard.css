@@ -1,0 +1,48 @@
+.film-card-outer-box{
+    background-color: #fdf1d5;
+    border-radius: 8px;
+    padding: 16px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 16px 0;
+    width: 400px;
+}
+
+.film-card-inner-box {
+  border: 2px solid #df0000;
+  padding: 16px;
+  background-color: #f9f1df;
+  font-family: "Aachen Bold" , serif;
+  text-align: center;
+  height: 100%;
+}
+
+.film-card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.film-rank {
+  color: #b22222;
+}
+
+.film-title {
+  flex-grow: 1;
+  text-align: center;
+  color: #b70000;
+}
+
+.film-card-details {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #6b0000;
+  line-height: 1.4;
+}
+
+.film-card.expanded {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transform: scale(1.02);
+}

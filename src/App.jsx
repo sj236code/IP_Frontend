@@ -18,13 +18,13 @@ function App() {
 
   return (
     <div className="app-general">
-      <Header/> <hr></hr>
+      <Header/> <hr />
       <div>
-        <br></br>
+        <br />
         <LandingPage />
-        <br></br>
+        <br />
         Hello World
-        <br></br>
+        <br />
       </div>
       <Footer/>
     </div>
