@@ -7,13 +7,25 @@ function LandingPage(){
     const[topFilms, setTopFilms] = useState([]); // Top 5 Rented Films
     const[userSelectedFilm, setUserSelectedFilm] = useState(null); // Track User Selected Film
 
-    // Connect to Flask server
+    const[topActors, setTopActors] = useState([]); // Top 5 Rented Films
+    const[userSelectedActor, setUserSelectedActor] = useState(null); // Track User Selected Film
+
+    // Fetch Top 5 Films
     useEffect(()=> {
         const fetchTopFilms = async() => {
             const response = await axios.get("http://localhost:5000/topFilms");
             setTopFilms(response.data);
         };
         fetchTopFilms()
+    },[])
+
+    //Fetch Top 5 Actors
+    useEffect(()=> {
+        const fetchTopActors = async() => {
+            const response = await axios.get("http://localhost:5000/topActors");
+            setTopActors(response.data);
+        };
+        fetchTopActors()
     },[])
 
     return (
@@ -27,6 +39,12 @@ function LandingPage(){
                 category={film.category}
                 rented={film.rented}
                 />
+            ))}
+            <h1>Top 5 Actors:</h1>
+            {topActors.map((actor,index) => (
+                <div key={actor.actor_id}>
+                    {actor.first_name}
+                </div>
             ))}
         </div>
     );
