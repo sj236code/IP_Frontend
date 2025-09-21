@@ -43,7 +43,16 @@ function LandingPage(){
             <h1>Top 5 Actors:</h1>
             {topActors.map((actor,index) => (
                 <div key={actor.actor_id}>
-                    {actor.first_name}
+                    <h2>{actor.first_name} {actor.last_name}</h2>
+                    <p>Films in store: {actor.film_count}</p>
+                    <h3>Top 5 Rented Films: </h3>
+                        <ul>
+                            {actor.top_films.map((film) => (
+                                <li key={film.film_id}>
+                                    {film.title} - rented {film.rental_count} times
+                                </li>
+                            ))}
+                        </ul>
                 </div>
             ))}
         </div>
