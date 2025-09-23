@@ -5,6 +5,7 @@ import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import LandingPage from './pages/LandingPage.jsx'
 import FilmsPage from './pages/FilmsPage.jsx'
+import CustomerPage from './pages/CustomerPage.jsx'
 import axios from "axios"
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/films" element={<FilmsPage />} />
+            <Route path="/customer" element={<CustomerPage />} />
           </Routes>
         </div>
         <Footer/>
