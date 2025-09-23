@@ -85,37 +85,19 @@ function FilmDetails({ title }){
                                     </div>
                                 ) : details ? (
                                     <div>
-                                        {details.description && (
-                                            <p><strong>Description:</strong> {details.description}</p>
-                                        )}
-                                        {details.release_year && (
-                                            <p><strong>Release Year:</strong> {details.release_year}</p>
-                                        )}
-                                        {details.length && (
-                                            <p><strong>Length:</strong> {details.length} minutes</p>
-                                        )}
-                                        {details.rating && (
-                                            <p><strong>Rating:</strong> {details.rating}</p>
-                                        )}
-                                        {details.category && (
-                                            <p><strong>Category:</strong> {details.category}</p>
-                                        )}
-                                        {details.rental_rate && (
-                                            <p><strong>Rental Rate:</strong> ${details.rental_rate}</p>
-                                        )}
-                                        {details.actors && (
-                                            <p><strong>Actors:</strong> {details.actors}</p>
-                                        )}
+                                        {details.description && (<p><strong>Description:</strong> {details.description}</p>)}
+                                        {details.release_year && (<p><strong>Release Year:</strong> {details.release_year}</p>)}
+                                        {details.length && (<p><strong>Length:</strong> {details.length} minutes</p>)}
+                                        {details.rating && (<p><strong>Rating:</strong> {details.rating}</p>)}
+                                        {details.category && (<p><strong>Category:</strong> {details.category}</p>)}
+                                        {details.rental_rate && (<p><strong>Rental Rate:</strong> ${details.rental_rate}</p>)}
+                                        {details.actors && (<p><strong>Actors:</strong> {details.actors}</p>)}
                                         {details.special_features && details.special_features.length > 0 && (
                                             <p><strong>Special Features:</strong> {Array.isArray(details.special_features) ? details.special_features.join(', ') : details.special_features}</p>
                                         )}
-                                        {details.copies_avail && (
-                                            <p><strong>Copies Available:</strong> {details.copies_avail}</p>
-                                        )}
+                                        {details.copies_avail && (<p><strong>Copies Available:</strong> {details.copies_avail}</p>)}
                                     </div>
-                                ) : (
-                                    <p>No details available for this film.</p>
-                                )}
+                                ) : (<p>No details available for this film.</p>)}
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" onClick={closeModal}>

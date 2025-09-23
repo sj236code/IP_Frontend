@@ -5,13 +5,26 @@ import { Pagination } from "react-bootstrap";
 
 function FilmsPage(){
 
+    const[allData, setAllData] = useState([]);
     const[searchResults, setSearchResults] = useState([]);
     const[currentPage, setCurrentPage] = useState(1);
     const resultsPerPage = 10;
 
+    useEffect(() => {
+        const fetchAllData = async() =>{
+            const response = await axios.get("http://localhost:5000/searchFilm", {
+                params: { query: "" }
+            });
+            setAllData(response.data);
+            setSearchResults(response.data);
+            //console.log("All data loaded.");
+        }
+        fetchAllData();
+    }, []);
+
     const handleSearch = async (query) => {
         if(query.trim() === ""){
-            setSearchResults([]);
+            setSearchResults(allData);
             setCurrentPage(1);
             return;
         }
