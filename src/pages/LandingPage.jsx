@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import FilmCard from "../components/FilmCard";
+//import FilmCard from "../components/FilmCard";
 import FilmDetails from "../components/FilmDetails";
 
 function LandingPage(){

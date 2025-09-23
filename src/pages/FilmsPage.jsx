@@ -11,7 +11,7 @@ function FilmsPage(){
 
     const handleSearch = async (query) => {
         if(query.trim() === ""){
-            setResults([]);
+            setSearchResults([]);
             setCurrentPage(1);
             return;
         }
@@ -34,11 +34,6 @@ function FilmsPage(){
 
     const totalPages = Math.ceil(searchResults.length/resultsPerPage);
 
-    const pageNumbers = []
-    for(let i=1;i<=totalPages;i++){
-        pageNumbers.push(i);
-    }
-
      return (
         <div className="container mt-4">
         <SearchBar
@@ -47,47 +42,45 @@ function FilmsPage(){
             results={currentResults}
         />
 
+        {/* {searchResults.length > 0 && (
+            <div className="text-center mt 3">
+                <p className ="text-center mt 3">
+                    Showing {currentResults.length} results
+                </p>
+            </div>
+        )} */}
+
         {totalPages > 1 && (
-            <nav aria-label="Search results pagination" className="mt-3">
-            <ul className="pagination justify-content-center">
-                <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                <button
-                    className="page-link"
-                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                >
-                Previous
-                </button>
-                </li>
-
-                {pageNumbers.map((number) =>
-                number === currentPage ? (
-                    <li key={number} className="page-item active" aria-current="page">
-                    <span className="page-link">{number}</span>
-                    </li>
-                ) : (
-                    <li key={number} className="page-item">
-                    <button
-                        className="page-link"
-                        onClick={() => setCurrentPage(number)}
-                    >
-                        {number}
-                    </button>
-                    </li>
-                )
-                )}
-
-                <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                <button
-                    className="page-link"
-                    onClick={() =>
-                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                    }
-                >
-                Next
-                </button>
-                </li>
-            </ul>
-            </nav>
+                <nav aria-label="Search results pagination" className="mt-4">
+                    <div className="d-flex justify-content-center align-items-center">
+                        <button
+                            className="btn btn-outline-primary me-3"
+                            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                            disabled={currentPage === 1}
+                        >
+                            &laquo; Previous
+                        </button>
+                        
+                        <span className="mx-3">
+                            Showing {firstIndex + 1}-{Math.min(lastIndex, searchResults.length)} of {searchResults.length}
+                        </span>
+                        
+                        <button
+                            className="btn btn-outline-primary ms-3"
+                            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                            disabled={currentPage === totalPages}
+                        >
+                            Next &raquo;
+                        </button>
+                    </div>
+                    
+                    {/* Page info */}
+                    <div className="text-center mt-2">
+                        <small className="text-muted">
+                            Page {currentPage} of {totalPages}
+                        </small>
+                    </div>
+                </nav>
         )}
         </div>
     );
