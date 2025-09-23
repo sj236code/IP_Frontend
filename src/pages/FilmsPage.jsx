@@ -55,7 +55,7 @@ function FilmsPage(){
                     className="page-link"
                     onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 >
-                    Previous
+                Previous
                 </button>
                 </li>
 
@@ -83,7 +83,7 @@ function FilmsPage(){
                     setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                     }
                 >
-                    Next
+                Next
                 </button>
                 </li>
             </ul>

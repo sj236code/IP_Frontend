@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FilmCard from "../components/FilmCard";
+import FilmDetails from "../components/FilmDetails";
 
 function LandingPage(){
 
@@ -32,13 +33,7 @@ function LandingPage(){
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
             <h1>Top 5 Rented Films:</h1>
             {topFilms.map((film, index) => (
-                <FilmCard
-                key={film.film_id}
-                rank={index + 1}
-                title={film.title}
-                category={film.category}
-                rented={film.rented}
-                />
+                <FilmDetails key={film.title || index} title = {film.title} />
             ))}
             <h1>Top 5 Actors:</h1>
             {topActors.map((actor,index) => (
