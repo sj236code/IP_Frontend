@@ -1,53 +1,45 @@
 import React, { useState } from "react";
 
-function SearchBar({placeholder, data}){
+function SearchBar({placeholder, onSearch, results}){
 
-    const [filteredData, setFilteredData] = useState([]);
+    // const [filteredData, setFilteredData] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
 
-    const handleFilter = (event) => {
+    const handleChange = (event) =>{
         const searchWord = event.target.value;
         setWordEntered(searchWord);
-        const newFilter = data.filter((value) => {
-            return value.title?.toLowerCase().includes(searchWord.toLowerCase());
-        });
-        //console.log(searchWord);
-        if(searchWord == ""){
-            setFilteredData([]);
-        }
-        else{
-            setFilteredData(newFilter);
-        }
-    };
+        onSearch(searchWord);
+    }
 
     return (
-        <div className="row d-flex justify-content-center ">
+        <div className="container mt-4">
+        <div className="row justify-content-center">
             <div className="col-md-6">
-                <div className="form">
-                    <i className="fa fa-search"></i>
-                    <input 
-                        type="text"
-                        placeholder={placeholder}
-                        className="form-control form-input"
-                        value={wordEntered}
-                        onChange={handleFilter}
-                    />
-                    <span className="left-pan"><i className="fa fa-microphone"></i></span>
-                </div>
+            <input
+                type="text"
+                className="form-control"
+                placeholder={placeholder}
+                value={wordEntered}
+                onChange={handleChange}
+            />
 
-                {filteredData.length != 0 && (
-                    <div className="dataResult">
-                        {filteredData.slice(0,15).map((value,index) => {
-                            return(
-                                <div className="list border-bottom" key={index}>
-                                    <span>{value.title}</span>
-                                </div>
-                            );
-                        })}
-                    </div>
-                )}
-
+            {results.length > 0 && (
+                <ul className="list-group mt-2">
+                {results.map((item, index) => (
+                <li
+                    key={index}
+                    className="list-group-item list-group-item-action"
+                    onClick={() => alert(`${item.type}: ${item.value}`)}
+                    style={{ cursor: "pointer" }}
+                >
+                    <strong>{item.value}</strong>{" "}
+                    <em className="text-muted">({item.type})</em>
+                </li>
+                ))}
+                </ul>
+            )}
             </div>
+        </div>
         </div>
     );
 

@@ -6,17 +6,28 @@ function FilmsPage(){
 
     const[searchResults, setSearchResults] = useState([]);
 
-    useEffect(() => {
-        const fetchSearchResults = async() => {
-            const response = await axios.get("http://localhost:5000/searchFilm");
-            setSearchResults(response.data);
+    const handleSearch = async (query) => {
+        if(query.trim() === ""){
+            setResults([]);
+            return;
         }
-        fetchSearchResults()
-    },[])
+        try{
+            const response = await axios.get("http://localhost:5000/searchFilm", {
+                params:{query},
+            });
+            setSearchResults(response.data);
+            console.log("Search results: ", response.data);
+        }
+        catch(error){
+            console.error("Error fetching search results: ", error);
+        }
+    };
 
     return (
         <div>
-            <SearchBar placeholder="Enter a Name..." data={searchResults}/>
+            <SearchBar placeholder="Enter a Film, Actor, or Genre..."
+            onSearch={handleSearch}
+            results={searchResults}/>
         </div>
     )
 

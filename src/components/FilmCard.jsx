@@ -21,7 +21,7 @@ function FilmCard({ rank, title, category, rented, }){
 
                     <div className="film-card-details">
                         <p><strong>Category: </strong>{category}</p>
-                        <p><strong>Times Ranted: </strong>{rented}</p>
+                        <p><strong>Times Rented: </strong>{rented}</p>
                     </div>
 
                 )}
