@@ -25,7 +25,6 @@ function SearchBar({placeholder, onSearch, results}){
                 </div>
             </div>
 
-            {/* List layout with dividers */}
             <div className="row justify-content-center mt-4">
                 <div className="col-md-8">
                     {results.length > 0 ? (

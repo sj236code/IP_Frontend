@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CustomerSearch from "../components/CustomerSearch";
+import CustomerForm from "../components/CustomerForm";
 import { Pagination } from "react-bootstrap";
+import { unstable_setDevServerHooks } from "react-router-dom";
 
 function CustomerPage(){
 
     const[allData, setAllData] = useState([]);
     const[searchResults, setSearchResults] = useState([]);
     const[currentPage, setCurrentPage] = useState(1);
+    const[showModal, setShowModal] = useState(false);
     const resultsPerPage = 10;
 
     useEffect(() => {
@@ -24,7 +27,7 @@ function CustomerPage(){
 
     const handleSearch = async (query) => {
         if(query.trim() === ""){
-            setSearchResults(allData);s
+            setSearchResults(allData);
             setCurrentPage(1);
             return;
         }
@@ -41,6 +44,29 @@ function CustomerPage(){
         }
     };
 
+    const addCustomer = async (newCustomer) => {
+        try{
+            const response = await axios.post("http://localhost:5000/addCustomer", newCustomer);
+
+            console.log("Response status:", response.status);
+            console.log("Response data:", response.data);
+
+            if(response.status === 201){
+                const updatedResponse = await axios.get("http://localhost:5000/searchCustomer",{
+                    params: { query: "" }
+                });
+                setAllData(updatedResponse.data);
+                setSearchResults(updatedResponse.data);
+
+                setShowModal(false);
+                console.log("Customer Added")
+            }
+        }
+        catch (error){
+            console.error("Error adding customer:", error);
+        }
+    }
+
     const lastIndex = currentPage * resultsPerPage;
     const firstIndex = lastIndex - resultsPerPage;
     const currentResults = searchResults.slice(firstIndex, lastIndex);
@@ -49,6 +75,11 @@ function CustomerPage(){
 
     return (
         <div className="container mt-4">
+
+            <button className="btn btn-success mb-3" onClick={() => setShowModal(true)}>
+                Add Customer
+            </button>
+
             <CustomerSearch
                 placeholder="Enter a Customer Name..."
                 onSearch={handleSearch}
@@ -94,6 +125,9 @@ function CustomerPage(){
                     </div>
                 </nav>
         )}
+
+        <CustomerForm show={showModal} onClose={()=>setShowModal(false)} onSubmit={addCustomer} />
+
         </div>
     );
 
