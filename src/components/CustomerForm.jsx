@@ -41,6 +41,7 @@ function CustomerForm({show, onClose, onSubmit, initialData = null}){
         }
     }, [initialData, show])
 
+    // pass event obj
     const handleDataEdit = (e) => {
         const {name, value} = e.target;
         setNewCustomer(prev => ({
