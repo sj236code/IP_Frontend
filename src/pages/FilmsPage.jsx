@@ -87,7 +87,6 @@ function FilmsPage(){
                         </button>
                     </div>
                     
-                    {/* Page info */}
                     <div className="text-center mt-2">
                         <small className="text-muted">
                             Page {currentPage} of {totalPages}

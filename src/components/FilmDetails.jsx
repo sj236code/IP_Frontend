@@ -95,7 +95,7 @@ function FilmDetails({ title }){
                                         {details.special_features && details.special_features.length > 0 && (
                                             <p><strong>Special Features:</strong> {Array.isArray(details.special_features) ? details.special_features.join(', ') : details.special_features}</p>
                                         )}
-                                        {details.copies_avail && (<p><strong>Copies Available:</strong> {details.copies_avail}</p>)}
+                                        {details.copies_avail !== undefined && details.copies_avail !== null && (<p><strong>Copies Available:</strong> {details.copies_avail}</p>)}
                                     </div>
                                 ) : (<p>No details available for this film.</p>)}
                             </div>
