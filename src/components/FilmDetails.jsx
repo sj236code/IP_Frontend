@@ -48,6 +48,9 @@ function FilmDetails({ title }){
         <>
             <div onClick={openModal} style={{ cursor: "pointer", padding: "10px", margin: "5px", border: "1px solid #ccc", borderRadius: "5px" }}>
                 <span>{title}</span>
+                    <div style={{ fontSize: "0.85em", textDecoration: "underline", color: "#007bff", marginTop: "4px" }}>
+                        Learn More
+                    </div>
             </div>
 
             {showModal && (
