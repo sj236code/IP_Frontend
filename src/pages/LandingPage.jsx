@@ -30,33 +30,35 @@ function LandingPage(){
     },[])
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", gap: "5rem", alignItems: "center"}}>
-            <div>
-                <h1>Top 5 Rented Films:</h1>
-                <div style={{display: "flex", flexDirection:"row", gap: "2rem", flexWrap:"wrap", justifyContent: "center"}}>
-                    {topFilms.map((film, index) => (
-                        <FilmDetails key={film.title || index} title = {film.title} />
-                    ))}
+        <div className = "bg-dark text-light min-vh-100 py-5">
+            <div style={{ display: "flex", flexDirection: "column", gap: "5rem", alignItems: "center"}}>
+                <div>
+                    <h1>Top 5 Rented Films:</h1>
+                    <div style={{display: "flex", flexDirection:"row", gap: "2rem", flexWrap:"wrap", justifyContent: "center"}}>
+                        {topFilms.map((film, index) => (
+                            <FilmDetails key={film.title || index} title = {film.title} />
+                        ))}
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h1>Top 5 Actors:</h1>
-                <div style={{display: "flex", flexDirection:"row", gap: "2rem", flexWrap: "wrap", justifyContent: "center"}}>
-                    {topActors.map((actor,index) => (
-                        <div key={actor.actor_id}>
-                            <h2>{actor.first_name} {actor.last_name}</h2>
-                            <p>Films in store: {actor.film_count}</p>
-                            <h3>Top 5 Rented Films: </h3>
-                                <ul>
-                                    {actor.top_films.map((film) => (
-                                        <li key={film.film_id}>
-                                            {film.title} - rented {film.rental_count} times
-                                        </li>
-                                    ))}
-                                </ul>
-                        </div>
-                    ))}
-                </div> 
+                <div>
+                    <h1>Top 5 Actors from Films in Stock!</h1>
+                    <div style={{display: "flex", flexDirection:"row", gap: "2rem", flexWrap: "wrap", justifyContent: "center"}}>
+                        {topActors.map((actor,index) => (
+                            <div key={actor.actor_id}>
+                                <h2>{actor.first_name} {actor.last_name}</h2>
+                                <p>Films in store: {actor.film_count}</p>
+                                <h3>Top 5 Rented Films: </h3>
+                                    <ul>
+                                        {actor.top_films.map((film) => (
+                                            <li key={film.film_id}>
+                                                {film.title} - rented {film.rental_count} times
+                                            </li>
+                                        ))}
+                                    </ul>
+                            </div>
+                        ))}
+                    </div> 
+                </div>
             </div>
         </div>
     );

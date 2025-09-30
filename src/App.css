@@ -8,7 +8,7 @@
   padding: 10px 20px;
   font-family: "Aachen Bold" , serif;
   font-size: 2rem;
-  color:rgb(0, 0, 0);
+  color:rgb(142, 153, 39);
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -19,10 +19,15 @@
   display: flex;
   gap: 20px;
   margin: 0;
-  font-size: 2rem;
   justify-content: space-evenly;
   padding: 20px;
   font-family: "Aachen Bold" , serif;
+}
+
+.nav-links a{
+  color: rgb(142, 153, 39);
+  text-decoration: none;
+  font-size: 2rem;
 }
 
 .footer{
